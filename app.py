@@ -15,7 +15,7 @@ app = Flask(__name__,template_folder='templates')
 model = pickle.load(open('DiabetesPrediction.pkl', 'rb'))
 @app.route('/',methods=['GET'])
 def Home():
-    return render_template('index.html')
+    return render_template('index2.html')
 
 
 standard_to = StandardScaler()
@@ -105,12 +105,12 @@ def predict():
         output=round(prediction[0],2)
         if output==0:
             print(output)
-            return render_template('index.html',prediction_text="You do not have diabetes")
+            return render_template('diabetes.html',prediction_text="You do not have diabetes")
         else:
             print(output)
-            return render_template('index.html',prediction_text="Ooops!! You might have diabetes")
+            return render_template('diabetes.html',prediction_text="Ooops!! You might have diabetes")
     else:
-        return render_template('index.html')
+        return render_template('index2.html')
 
 if __name__=="__main__":
     app.run(debug=True)
